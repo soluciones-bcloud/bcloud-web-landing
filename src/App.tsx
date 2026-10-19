@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Server, Monitor, Wrench, ChevronRight, Database,
-  ShieldCheck, Globe, ShoppingCart, Menu, X,
-  Sun, Moon, CheckCircle2,
+import { 
+  Server, Monitor, Wrench, ChevronRight, Database, 
+  ShieldCheck, Globe, ShoppingCart, Menu, X, 
+  Sun, Moon, CheckCircle2, 
   Car, Stethoscope, Building, ArrowRight, Laptop, Network,
-  BarChart3, Users, Plus, Minus, FileText, Star, Quote, HelpCircle, Phone,
+  BarChart3, Users, Plus, Minus, FileText, Star, Quote, HelpCircle, Phone, 
   Zap, Activity, Lock, Mail, User, Smartphone, MapPin, Settings, Clock, Headset, Package,
-  Wand2, Layout
+  Wand2, Layout, ChevronDown, ChevronUp
 } from "lucide-react";
 
 // --- CONFIGURACIÓN ---
@@ -754,48 +754,167 @@ const FAQ = () => {
   );
 };
 
-// --- DATOS DE LOS PLANES ---
+// --- DATOS DE LOS PLANES (MATRIZ COMPLETA D'LUXE) ---
 const planesData = [
   {
-    id: "basico",
-    name: "Básico",
-    desc: "Empieza con lo esencial, sin complicaciones.",
-    price: "149",
-    implementation: "300 pago único",
-    features: ["Recepción vehicular con fotos", "Historial de placas", "Soporte en horario de oficina", "1 usuario incluido"],
+    id: "esencial",
+    name: "Esencial",
+    desc: "Todo lo necesario para organizar tu negocio.",
+    price: "249",
+    implementation: "400 pago único",
+    features: [
+      "Usuarios, clientes y sedes sin límite",
+      "Agenda, historial y gestión operativa",
+      "Cotizaciones, pagos e inventario",
+      "Reportes y control administrativo",
+      "20 GB de almacenamiento en la nube",
+      "Soporte local y actualizaciones"
+    ],
+    details: [
+      {
+        category: "Gestión del Negocio",
+        items: ["Usuarios, clientes y sedes sin límite", "Vehículos y registros ilimitados", "Roles y permisos de acceso", "Agenda y programación de citas", "Historial y expedientes digitales", "Presupuestos y cotizaciones", "Control de pagos y cobranzas", "Inventario y servicios", "Reportes administrativos"]
+      },
+      {
+        category: "Almacenamiento en la Nube",
+        items: ["20 GB de espacio incluido", "Fotografías y documentos", "Archivos PDF y cotizaciones", "Imágenes clínicas o vehiculares", "Ampliación de almacenamiento"]
+      },
+      {
+        category: "CRM y WhatsApp",
+        items: ["CRM y seguimiento manual"]
+      },
+      {
+        category: "Soporte y Servicios",
+        items: ["Acceso web desde cualquier lugar", "Soporte en horario de oficina", "Actualizaciones del sistema", "Capacitación inicial"]
+      }
+    ],
     popular: false,
     color: "bg-white text-slate-900"
   },
   {
-    id: "pro",
-    name: "Pro",
-    desc: "Gestiona todo tu negocio desde un solo lugar.",
-    price: "279",
-    implementation: "500 pago único",
-    features: ["Todo lo de Básico", "Control de mecánicos y comisiones", "Facturación electrónica (SUNAT)", "Soporte 24/7", "3 usuarios incluidos"],
+    id: "profesional",
+    name: "Profesional",
+    desc: "Conecta con tus clientes y automatiza su seguimiento.",
+    price: "349",
+    implementation: "800 pago único",
+    features: [
+      "Todo lo de Esencial",
+      "WhatsApp integrado con tu CRM",
+      "Bandeja compartida para recepcionistas",
+      "Recordatorios automáticos y campañas",
+      "S/30 de crédito WhatsApp mensual",
+      "50 GB de almacenamiento en la nube"
+    ],
+    details: [
+      {
+        category: "Gestión del Negocio",
+        items: ["Usuarios, clientes y sedes sin límite", "Vehículos y registros ilimitados", "Roles y permisos de acceso", "Agenda y programación de citas", "Historial y expedientes digitales", "Presupuestos y cotizaciones", "Control de pagos y cobranzas", "Inventario y servicios", "Reportes administrativos"]
+      },
+      {
+        category: "Almacenamiento en la Nube",
+        items: ["50 GB de espacio incluido", "Fotografías y documentos", "Archivos PDF y cotizaciones", "Imágenes clínicas o vehiculares", "Ampliación de almacenamiento"]
+      },
+      {
+        category: "CRM y WhatsApp",
+        items: ["CRM y seguimiento manual", "WhatsApp API integrado", "Bandeja compartida de atención", "Atención con múltiples agentes", "Recordatorios automáticos", "S/ 30 de crédito WhatsApp mensual", "Campañas masivas por WhatsApp"]
+      },
+      {
+        category: "Soporte y Servicios",
+        items: ["Acceso web desde cualquier lugar", "Soporte en horario de oficina", "Actualizaciones del sistema", "Capacitación inicial"]
+      }
+    ],
+    popular: false,
+    color: "bg-white text-slate-900"
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    desc: "Tu negocio atiende fuera del horario de oficina.",
+    price: "499",
+    implementation: "1100 pago único",
+    features: [
+      "Todo lo de Profesional",
+      "Asistente de IA disponible 24/7",
+      "Respuestas y agendamiento inteligente",
+      "300 atenciones IA mensuales",
+      "S/70 de crédito WhatsApp mensual",
+      "100 GB de almacenamiento en la nube"
+    ],
+    details: [
+      {
+        category: "Gestión del Negocio",
+        items: ["Usuarios, clientes y sedes sin límite", "Vehículos y registros ilimitados", "Roles y permisos de acceso", "Agenda y programación de citas", "Historial y expedientes digitales", "Presupuestos y cotizaciones", "Control de pagos y cobranzas", "Inventario y servicios", "Reportes administrativos"]
+      },
+      {
+        category: "Almacenamiento en la Nube",
+        items: ["100 GB de espacio incluido", "Fotografías y documentos", "Archivos PDF y cotizaciones", "Imágenes clínicas o vehiculares", "Ampliación de almacenamiento"]
+      },
+      {
+        category: "CRM y WhatsApp",
+        items: ["CRM y seguimiento manual", "WhatsApp API integrado", "Bandeja compartida de atención", "Atención con múltiples agentes", "Recordatorios automáticos", "S/ 70 de crédito WhatsApp mensual", "Campañas masivas por WhatsApp"]
+      },
+      {
+        category: "Inteligencia Artificial",
+        items: ["Asistente de atención 24/7", "Respuestas sobre servicios y precios", "Consulta de disponibilidad de citas", "Agendamiento asistido por IA", "Transferencia de IA a recepcionista", "300 atenciones IA incluidas al mes"]
+      },
+      {
+        category: "Soporte y Servicios",
+        items: ["Acceso web desde cualquier lugar", "Soporte en horario de oficina", "Actualizaciones del sistema", "Capacitación inicial"]
+      }
+    ],
     popular: true,
     color: "bg-[#0B1528] text-white"
   },
   {
     id: "enterprise",
     name: "Enterprise",
-    desc: "Escala tu empresa y automatiza el crecimiento.",
-    price: "479",
+    desc: "Mayor capacidad para empresas en crecimiento.",
+    price: "799",
     implementation: "A convenir",
-    features: ["Todo lo de Pro", "Gestión multi-sucursal", "Módulo de contabilidad avanzada", "API para integraciones", "Usuarios ilimitados"],
+    features: [
+      "Todo lo de Premium",
+      "Automatizaciones avanzadas",
+      "1.000 atenciones IA mensuales",
+      "S/150 de crédito WhatsApp mensual",
+      "250 GB de almacenamiento en la nube",
+      "Opciones de integraciones a medida"
+    ],
+    details: [
+      {
+        category: "Gestión del Negocio",
+        items: ["Usuarios, clientes y sedes sin límite", "Vehículos y registros ilimitados", "Roles y permisos de acceso", "Agenda y programación de citas", "Historial y expedientes digitales", "Presupuestos y cotizaciones", "Control de pagos y cobranzas", "Inventario y servicios", "Reportes administrativos"]
+      },
+      {
+        category: "Almacenamiento en la Nube",
+        items: ["250 GB de espacio incluido", "Fotografías y documentos", "Archivos PDF y cotizaciones", "Imágenes clínicas o vehiculares", "Ampliación de almacenamiento"]
+      },
+      {
+        category: "CRM y WhatsApp",
+        items: ["CRM y seguimiento manual", "WhatsApp API integrado", "Bandeja compartida de atención", "Atención con múltiples agentes", "Recordatorios automáticos", "S/ 150 de crédito WhatsApp mensual", "Campañas masivas por WhatsApp"]
+      },
+      {
+        category: "Inteligencia Artificial",
+        items: ["Asistente de atención 24/7", "Respuestas sobre servicios y precios", "Consulta de disponibilidad de citas", "Agendamiento asistido por IA", "Transferencia de IA a recepcionista", "1.000 atenciones IA incluidas al mes", "Automatizaciones avanzadas"]
+      },
+      {
+        category: "Soporte y Servicios",
+        items: ["Acceso web desde cualquier lugar", "Soporte en horario de oficina", "Actualizaciones del sistema", "Capacitación inicial", "Integraciones personalizadas (A cotizar)"]
+      }
+    ],
     popular: false,
     color: "bg-white text-slate-900"
   }
 ];
 
 
-// --- VISTA PREMIUM DE PLANES ---
+// --- VISTA PREMIUM DE PLANES (D'LUXE EXPANDIBLE) ---
 const PlanesView = ({ onSelectPlan }: { onSelectPlan: (plan: any) => void }) => {
   const [billingCycle, setBillingCycle] = useState<'mensual' | 'anual'>('mensual');
+  const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
 
   return (
     <section id="planes" className="py-24 bg-slate-50/50 dark:bg-slate-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-px w-8 bg-blue-600"></div>
@@ -809,7 +928,6 @@ const PlanesView = ({ onSelectPlan }: { onSelectPlan: (plan: any) => void }) => 
             Implementación segura y soporte continuo para talleres, clínicas y negocios en crecimiento.
           </p>
 
-          {/* Botón Toggle Mensual / Anual */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <div className="bg-white border border-slate-200 dark:border-slate-800 p-1 rounded-full flex items-center shadow-sm">
               <button
@@ -838,64 +956,117 @@ const PlanesView = ({ onSelectPlan }: { onSelectPlan: (plan: any) => void }) => 
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-end">
+        {/* Cambiamos items-end a items-start para que cada tarjeta maneje su altura independientemente */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {planesData.map((plan, i) => {
             const basePrice = parseInt(plan.price);
             const displayPrice = billingCycle === 'anual' ? Math.round(basePrice * 0.85) : basePrice;
+            const isExpanded = expandedPlan === plan.id;
 
             return (
-              <div key={i} className={`relative p-8 rounded-3xl border transition-all duration-300 flex flex-col ${plan.popular ? 'bg-[#0B1528] text-white border-[#1A56DB] shadow-2xl shadow-blue-900/20 scale-105 z-10 pb-12' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'}`}>
-                {/* SOLUCIÓN: whitespace-nowrap y w-max previenen el salto de línea */}
+              <motion.div 
+                layout // Esto hace que la tarjeta crezca y se encoja de forma súper fluida
+                key={i} 
+                className={`relative p-6 xl:p-8 rounded-3xl border flex flex-col ${plan.popular ? 'bg-[#0B1528] text-white border-[#1A56DB] shadow-2xl shadow-blue-900/20 lg:-translate-y-4 z-10' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'}`}
+              >
                 {plan.popular && (
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#1A56DB] text-white px-6 py-2 rounded-full text-xs font-black tracking-widest uppercase shadow-lg flex items-center justify-center gap-2 border-2 border-white dark:border-slate-950 whitespace-nowrap w-max">
-                    <Star size={14} className="text-yellow-400 fill-current" /> EL MÁS ELEGIDO
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#1A56DB] text-white px-6 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-lg flex items-center justify-center gap-1.5 border border-blue-400/30 whitespace-nowrap">
+                    <Star size={12} className="text-yellow-400 fill-current" /> MÁS RECOMENDADO
                   </div>
                 )}
 
-                <div className="mb-6 flex items-center gap-4">
-                  <div className={`p-3 rounded-xl ${plan.popular ? 'bg-blue-900/50 text-blue-400' : 'bg-blue-50 text-blue-600'}`}>
-                    {plan.id === 'basico' ? <Database size={24} /> : plan.id === 'pro' ? <BarChart3 size={24} /> : <Building size={24} />}
+                <motion.div layout="position" className="mb-6 flex flex-col gap-4 mt-2">
+                  <div className={`w-14 h-14 flex items-center justify-center rounded-2xl shrink-0 ${plan.popular ? 'bg-blue-900/50 text-blue-400 border border-blue-700/50' : 'bg-blue-50 text-blue-600 border border-blue-100'}`}>
+                    {plan.id === 'esencial' ? <Database size={28} /> : plan.id === 'profesional' ? <Users size={28} /> : plan.id === 'premium' ? <Wand2 size={28} /> : <Building size={28} />}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black mb-1">Plan {plan.name}</h3>
-                    <p className={`text-xs ${plan.popular ? 'text-slate-400' : 'text-slate-500'}`}>{plan.desc}</p>
+                    <h3 className="text-2xl font-black mb-1.5">Plan {plan.name}</h3>
+                    <p className={`text-xs leading-relaxed ${plan.popular ? 'text-blue-200' : 'text-slate-500'}`}>{plan.desc}</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className={`mb-6 p-5 rounded-2xl ${plan.popular ? 'bg-slate-800/50' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
+                <motion.div layout="position" className={`mb-6 p-5 rounded-2xl shrink-0 ${plan.popular ? 'bg-slate-800/50 border border-white/5' : 'bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700'}`}>
                   <div className="text-[10px] font-black uppercase tracking-widest mb-1 opacity-70">Implementación</div>
-                  <div className="text-sm font-bold mb-4">S/ {plan.implementation}</div>
+                  <div className="text-sm font-bold mb-4">{plan.implementation.includes('convenir') ? plan.implementation : `S/ ${plan.implementation}`}</div>
 
                   <div className="text-[10px] font-black uppercase tracking-widest mb-1 opacity-70">Plan Mensual</div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-black">S/ {displayPrice}</span>
-                    <span className="text-sm font-bold opacity-70">/mes</span>
+                  <div className="flex items-baseline gap-1 flex-wrap">
+                    <span className="text-4xl font-black">S/ {displayPrice}</span>
+                    <span className="text-xs font-bold opacity-70">/mes</span>
                   </div>
                   {billingCycle === 'anual' && (
                     <div className="text-[10px] text-emerald-400 mt-2 font-bold">Facturado anual (S/ {displayPrice * 12})</div>
                   )}
-                </div>
+                </motion.div>
 
-                <div className="space-y-4 mb-8 flex-1">
-                  <div className="text-[10px] font-black uppercase tracking-widest mb-4 opacity-70">Principales Funcionalidades:</div>
-                  {plan.features.map((feat, j) => (
-                    <div key={j} className="flex items-start gap-3">
-                      <CheckCircle2 size={18} className={`shrink-0 mt-0.5 ${plan.popular ? 'text-blue-400' : 'text-emerald-500'}`} />
-                      <span className="text-sm font-medium">{feat}</span>
-                    </div>
-                  ))}
-                </div>
+                {/* Sección de Funcionalidades Expandible Animada */}
+                <motion.div layout="position" className="flex-1 flex flex-col mb-6">
+                  <AnimatePresence mode="wait">
+                    {isExpanded ? (
+                      <motion.div 
+                        key="expanded"
+                        initial={{ opacity: 0, height: 0 }} 
+                        animate={{ opacity: 1, height: "auto" }} 
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-6 pt-2 overflow-hidden"
+                      >
+                        {plan.details.map((cat, idx) => (
+                          <div key={idx}>
+                            <div className={`text-[10px] font-black uppercase tracking-widest mb-3 pb-1 border-b ${plan.popular ? 'border-white/10 text-blue-300' : 'border-slate-100 dark:border-slate-800 text-blue-600 dark:text-blue-400'}`}>
+                              {cat.category}
+                            </div>
+                            <div className="space-y-2.5">
+                              {cat.items.map((item, j) => (
+                                <div key={j} className="flex items-start gap-2.5">
+                                  <CheckCircle2 size={14} className={`shrink-0 mt-0.5 ${plan.popular ? 'text-blue-400' : 'text-emerald-500'}`} />
+                                  <span className={`text-[11px] lg:text-xs font-medium leading-snug ${plan.popular ? 'text-slate-300' : 'text-slate-600 dark:text-slate-300'}`}>{item}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </motion.div>
+                    ) : (
+                      <motion.div 
+                        key="collapsed"
+                        initial={{ opacity: 0 }} 
+                        animate={{ opacity: 1 }} 
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-3 overflow-hidden"
+                      >
+                        <div className="text-[10px] font-black uppercase tracking-widest mb-4 opacity-70">Principales Funcionalidades:</div>
+                        {plan.features.map((feat, j) => (
+                          <div key={j} className="flex items-start gap-3">
+                            <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${plan.popular ? 'text-blue-400' : 'text-emerald-500'}`} />
+                            <span className={`text-[12px] lg:text-[13px] font-medium leading-snug ${plan.popular ? 'text-slate-200' : 'text-slate-700 dark:text-slate-300'}`}>{feat}</span>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  
+                  {/* Botón Ver Más */}
+                  <button
+                    onClick={() => setExpandedPlan(isExpanded ? null : plan.id)}
+                    className={`mt-6 w-full flex items-center justify-center gap-1.5 text-xs font-bold py-2.5 rounded-xl transition-colors ${plan.popular ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300'}`}
+                  >
+                    {isExpanded ? <><ChevronUp size={16}/> Ver resumen</> : <><ChevronDown size={16}/> Ver todas las características</>}
+                  </button>
+                </motion.div>
 
-                <button
+                <motion.button
+                  layout="position"
                   onClick={() => onSelectPlan({ ...plan, billingCycle })}
-                  className={`w-full py-4 rounded-xl font-bold transition-all flex justify-center items-center gap-2 ${plan.popular
-                    ? "bg-blue-600 hover:bg-blue-500 text-white"
-                    : "bg-white border border-slate-200 hover:border-blue-600 text-slate-900"
+                  className={`w-full py-4 rounded-xl font-bold transition-all flex justify-center items-center gap-2 mt-auto shrink-0 ${plan.popular
+                    ? "bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20"
+                    : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-500 text-slate-900 dark:text-white"
                     }`}
                 >
-                  Suscribirse al {plan.name} {plan.popular && <ArrowRight size={18} />}
-                </button>
-              </div>
+                  Elegir {plan.name} <ArrowRight size={18} />
+                </motion.button>
+              </motion.div>
             );
           })}
         </div>
